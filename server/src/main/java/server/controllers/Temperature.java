@@ -1,6 +1,8 @@
 package server.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import server.services.TempService;
 
 import java.util.*;
 
@@ -9,19 +11,28 @@ import java.util.*;
 @CrossOrigin
 public class Temperature{
 
-    @RequestMapping(value="/", method = RequestMethod.GET)
-    @ResponseBody
-    public String tempe() {
+    private final TempService tempService;
 
-        return "Hello world";
+    @Autowired
+    public Temperature(TempService tempService) {
+        this.tempService = tempService;
     }
 
-    @RequestMapping(value="/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/{temp}", method = RequestMethod.GET)
     @ResponseBody
-    public HashMap<Number, String> temp() {
-        HashMap<Number, String> num = new HashMap<>();
-        num.put(3, "dasds");
-        num.put(423, "hello");
-        return num;
+    public Map<String, Double> AllTemps(@PathVariable("temp") Double temp) {
+        return tempService.getAllTemps(temp);
+    }
+
+    @RequestMapping(value="/far/{temp}", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Double> tempFar(@PathVariable("temp") Double temp) {
+        return tempService.tempToFar(temp);
+    }
+
+    @RequestMapping(value="/kel/{temp}", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Double> tempKel(@PathVariable("temp") Double temp) {
+        return tempService.tempToKel(temp);
     }
 }
