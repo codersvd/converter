@@ -12,7 +12,7 @@ public class TempService {
     private Map<String, Double> createTemp(String type, Double temp) {
 
         Map<String, Double> t = new HashMap<>();
-        t.put(type, Math.round(temp*100.00)/100.00);
+        t.put(type, Math.round(temp * 100.00) / 100.00);
 
         return t;
     }

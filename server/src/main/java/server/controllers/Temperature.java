@@ -15,6 +15,7 @@ public class Temperature{
 
     @Autowired
     public Temperature(TempService tempService) {
+        assert tempService != null;
         this.tempService = tempService;
     }
 
