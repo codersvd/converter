@@ -1,0 +1,17 @@
+<button mat-icon-button (click)="addNewPlaceDialog()">
+  <mat-icon>add_circle_outline</mat-icon>
+</button>
+
+<ul>
+  <li *ngFor="let place of places">
+    <app-place place="{{place}}"></app-place>
+  </li>
+</ul>
+
+<!--<mat-tab-group>-->
+<!--<mat-tab *ngFor="let place of places" label="{{place.name}}">-->
+<!--<ng-template matTabContent>-->
+<!--{{place.id}} - {{place.name}}-->
+<!--</ng-template>-->
+<!--</mat-tab>-->
+<!--</mat-tab-group>-->
