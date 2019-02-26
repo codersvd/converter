@@ -1,52 +1,49 @@
 package server.services;
 
-import server.dao.PlacesDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import server.repositories.PlacesRepository;
 import server.dto.PlacesDto;
 
 import java.util.List;
 
+@Service
 public class PlacesService {
 
-    private static PlacesDao placesDao;
+    private PlacesRepository placesDao;
 
-    public PlacesService() {
-        placesDao = new PlacesDao();
+    @Autowired
+    public PlacesService(PlacesRepository ps) {
+        placesDao = ps;
     }
 
+    @Transactional
     public void save(PlacesDto entity) {
-        placesDao.openCurrentSessionWithTransaction();
         placesDao.save(entity);
-        placesDao.closeCurrentSessionWithTransaction();
     }
 
+    @Transactional
     public void update(PlacesDto entity) {
-        placesDao.openCurrentSessionWithTransaction();
         placesDao.save(entity);
-        placesDao.closeCurrentSessionWithTransaction();
     }
 
+    @Transactional
     public PlacesDto findById(Integer id) {
-        placesDao.openCurrentSession();
-        PlacesDto place = placesDao.findById(id);
-        placesDao.closeCurrentSession();
+        PlacesDto place = placesDao.findById(id).orElse(null);
         return place;
     }
 
+    @Transactional
     public void delete(Integer id) {
-        placesDao.openCurrentSessionWithTransaction();
-        PlacesDto place = placesDao.findById(id);
+        PlacesDto place = placesDao.findById(id).orElse(null);
         placesDao.delete(place);
-        placesDao.closeCurrentSessionWithTransaction();
     }
 
+    @Transactional
     public List<PlacesDto> findAll(){
-        placesDao.openCurrentSession();
         List<PlacesDto> places = placesDao.findAll();
-        placesDao.closeCurrentSession();
         return  places;
     }
 
-    public PlacesDao placesDao() {
-        return placesDao;
-    }
 }
