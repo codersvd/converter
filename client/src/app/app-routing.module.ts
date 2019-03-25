@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { PlacesComponent } from './places/places.component';
 
 const appRoute: Routes = [
@@ -7,7 +7,8 @@ const appRoute: Routes = [
 ];
 
 @NgModule( {
-    imports: []
+    exports: [RouterModule],
+    imports: [RouterModule.forRoot(appRoute)]
 } )
 
 export class AppRoutingModule {

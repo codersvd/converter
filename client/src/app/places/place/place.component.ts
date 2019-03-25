@@ -1,22 +1,18 @@
-import {Component, OnInit, Output} from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import {Place} from './place';
 
 @Component({
-  selector: '[app-place]',
+  selector: 'app-place',
   templateUrl: './place.component.html',
   styleUrls: ['./place.component.css']
 })
 export class PlaceComponent implements OnInit {
-  @Output() place: Place;
+  @Input() place: Place;
 
   constructor() {
   }
 
   ngOnInit() {
-  }
-
-  deletePlace(){
-    console.log(this.id, this.name);
   }
 
 }

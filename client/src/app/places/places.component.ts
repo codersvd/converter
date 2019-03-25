@@ -31,7 +31,7 @@ export class PlacesComponent implements OnInit {
       console.log(result);
       if (result) {
         this.name = result;
-        this.places.push(new PlaceComponent(5, this.name));
+        this.places.push(new Place(5, this.name));
       }
     });
   }
