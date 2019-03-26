@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Place} from './place';
 
 @Component({
@@ -8,11 +8,16 @@ import {Place} from './place';
 })
 export class PlaceComponent implements OnInit {
   @Input() place: Place;
+  @Output() itemDeleted = new EventEmitter<Place>();
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  onDeleteItem() {
+    this.itemDeleted.emit(this.place);
   }
 
 }

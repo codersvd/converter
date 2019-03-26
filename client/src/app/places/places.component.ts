@@ -36,6 +36,10 @@ export class PlacesComponent implements OnInit {
     });
   }
 
+  deleteItem(data: Place) {
+    console.log(data);
+  }
+
   ngOnInit() {
   }
 
