@@ -1,11 +1,34 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { PlacesComponent } from "./places/places.component";
+import { PlaceComponent } from "./places/place/place.component";
+import {
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatTabsModule
+} from "@angular/material";
+import { FormsModule } from "@angular/forms";
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        PlaceComponent,
+        PlacesComponent,
+        
       ],
+      imports: [
+          FormsModule,
+          MatTabsModule,
+          MatIconModule,
+          MatButtonModule,
+          MatDialogModule,
+          MatInputModule,
+          MatFormFieldModule
+      ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

@@ -4,7 +4,7 @@ import {Place} from './place';
 @Component({
   selector: 'app-place',
   templateUrl: './place.component.html',
-  styleUrls: ['./place.component.css']
+  styleUrls: ['./place.component.less']
 })
 export class PlaceComponent implements OnInit {
   @Input() place: Place;

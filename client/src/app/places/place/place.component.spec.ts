@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PlaceComponent } from './place.component';
 import { Input } from "@angular/core";
+import { MatIconModule } from "@angular/material";
+import { Place } from "./place";
 
 describe('PlaceComponent', () => {
   let component: PlaceComponent;
@@ -9,7 +11,10 @@ describe('PlaceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlaceComponent ]
+      declarations: [ PlaceComponent ],
+      imports: [
+        MatIconModule
+      ]
     })
     .compileComponents();
   }));
