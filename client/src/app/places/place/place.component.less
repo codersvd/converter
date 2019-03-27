@@ -1,6 +1,9 @@
 @blackColor: #000;
 
 li {
-  background: contrast(#fff);
+  background: @blackColor;
   color:white;
+  &:active {
+    background: saturate(hsl(@blackColor, 80%, 50%), 20%);
+  }
 }

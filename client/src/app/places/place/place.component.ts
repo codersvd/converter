@@ -16,7 +16,7 @@ export class PlaceComponent implements OnInit {
   ngOnInit() {
   }
 
-  onDeleteItem() {
+  onDeleteItem(): void {
     this.itemDeleted.emit(this.place);
   }
 
