@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Place} from './place';
-import { ActivatedRoute, Router } from "@angular/router";
+import {PlacesModel} from '../places.model';
+import { ActivatedRoute, Params } from "@angular/router";
+import { PlacesService } from "../places.service";
 
 @Component({
   selector: 'app-place',
@@ -8,17 +9,19 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ['./place.component.less']
 })
 export class PlaceComponent implements OnInit {
-  @Input() place: Place;
-  @Output() itemDeleted = new EventEmitter<Place>();
+  place: PlacesModel;
+  @Output() itemDeleted = new EventEmitter<PlacesModel>();
 
-  constructor(private router: ActivatedRoute ) {
+  constructor(private route: ActivatedRoute, private placesService: PlacesService ) {
   }
 
   ngOnInit() {
-      this.router.snapshot.params.subscribe(data => {
-          console.log(data);
-          this.place = data.id;
-      })
+    this.place = this.placesService.getPlace(this.route.snapshot.params["id"]);
+    
+    this.route.params.subscribe((params: Params) => {
+        this.placesService.placeSelected = params["id"];
+        this.place = this.placesService.getPlace(params["id"]);
+    });
   }
 
 }

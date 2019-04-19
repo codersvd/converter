@@ -4,9 +4,10 @@
 
 <nav mat-tab-nav-bar mat-align-tabs="center">
   <a mat-tab-link
-     *ngFor="let pl of places"
+     *ngFor="let pl of places; let i = index;"
      [routerLink]="['/place', pl.id]"
      routerLinkActive #rla="routerLinkActive"
+     [routerLinkActiveOptions]="pl.id == selectedPlace ? {exact: true} : {}"
      [active]="rla.isActive">
     {{pl.name | uppercase}}
     <button mat-icon-button (click)="deleteItem(pl)">
@@ -15,11 +16,3 @@
   </a>
 </nav>
 <router-outlet></router-outlet>
-
-<!--<mat-tab-group>-->
-<!--<mat-tab *ngFor="let place of places" label="{{place.name}}">-->
-<!--<ng-template matTabContent>-->
-<!--{{place.id}} - {{place.name}}-->
-<!--</ng-template>-->
-<!--</mat-tab>-->
-<!--</mat-tab-group>-->

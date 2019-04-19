@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PlaceComponent } from './place.component';
 import { Input } from "@angular/core";
 import { MatIconModule } from "@angular/material";
-import { Place } from "./place";
+import { PlacesModel } from "../place";
 
 describe('PlaceComponent', () => {
   let component: PlaceComponent;

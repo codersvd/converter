@@ -17,13 +17,16 @@ import { AddPlaceDialogComponent } from './places/add-place-dialog/add-place-dia
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from "./app-routing.module";
+import { PlacesService } from "./places/places.service";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule( {
     declarations: [
         AppComponent,
         PlacesComponent,
         PlaceComponent,
-        AddPlaceDialogComponent
+        AddPlaceDialogComponent,
+        PageNotFoundComponent
     ],
     imports: [
         AppRoutingModule,
@@ -40,7 +43,7 @@ import { AppRoutingModule } from "./app-routing.module";
     entryComponents: [
         AddPlaceDialogComponent
     ],
-    providers: [],
+    providers: [PlacesService],
     bootstrap: [ AppComponent ]
 } )
 
