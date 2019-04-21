@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from "./app-routing.module";
 import { PlacesService } from "./places/places.service";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ErrorPagesComponent } from './error-pages/error-pages.component';
 
 @NgModule( {
     declarations: [
@@ -26,7 +27,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
         PlacesComponent,
         PlaceComponent,
         AddPlaceDialogComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        ErrorPagesComponent
     ],
     imports: [
         AppRoutingModule,
