@@ -1,10 +1,10 @@
-import { Component, Injectable, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { PlaceComponent } from './place/place.component';
-import { AddPlaceDialogComponent } from './add-place-dialog/add-place-dialog.component';
-import { MatDialog } from '@angular/material';
-import { PlacesModel } from './places.model';
 import { ActivatedRoute, Params, Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+
+import { AddPlaceDialogComponent } from './add-place-dialog/add-place-dialog.component';
 import { PlacesService } from "./places.service";
+import { PlacesModel } from './places.model';
 
 @Component( {
     selector: 'app-places',
@@ -45,7 +45,7 @@ export class PlacesComponent implements OnInit {
                 this.placesService.addPlaces( new PlacesModel( Math.floor( Math.random() * 100 ), this.name, 1 ) );
                 
                 let firstPlace = this.placesService.getPlaces()[ 0 ];
-                if(this.placesService.getPlaces().length <= 1) {
+                if ( this.placesService.getPlaces().length <= 1 ) {
                     this.router.navigate( [ "place", firstPlace.id ], { relativeTo: this.route } );
                 }
             }
@@ -56,9 +56,9 @@ export class PlacesComponent implements OnInit {
         if ( window.confirm( 'Are sure you want to delete this item?' ) ) {
             this.placesService.deletePlace( data );
             let currentId = +this.placesService.placeSelected;
-            if ( currentId === data.id) {
+            if ( currentId === data.id ) {
                 let firstPlace = this.placesService.getPlaces()[ 0 ];
-                if(this.placesService.getPlaces().length > 0) {
+                if ( this.placesService.getPlaces().length > 0 ) {
                     this.router.navigate( [ "place", firstPlace.id ], { relativeTo: this.route } );
                 }
             }
