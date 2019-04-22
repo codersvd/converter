@@ -1,23 +1,31 @@
-<button mat-icon-button (click)="addNewPlaceDialog()">
-  <mat-icon>add_circle_outline</mat-icon>
-</button>
-
 <div *ngIf="places.length === 0; else showPlaces">
-  <a href="">Create First place</a>
+    <mat-card class="notice-create-place">
+        <mat-card-title>First place</mat-card-title>
+        <mat-card-content>
+            <p>You don't have places in you list.</p>
+            <p>Please add it.</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-flat-button color="primary" (click)="addNewPlaceDialog()">Create First place</button>
+        </mat-card-actions>
+    </mat-card>
 </div>
 <ng-template #showPlaces>
-  <nav mat-tab-nav-bar mat-align-tabs="center">
-    <a mat-tab-link
-       *ngFor="let pl of places; let i = index;"
-       [routerLink]="['/place', pl.id]"
-       routerLinkActive #rla="routerLinkActive"
-       [routerLinkActiveOptions]="pl.id == selectedPlace ? {exact: true} : {}"
-       [active]="rla.isActive">
-      {{pl.name | uppercase}}
-      <button mat-icon-button (click)="deleteItem(pl)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </a>
-  </nav>
-  <router-outlet></router-outlet>
+    <button mat-icon-button (click)="addNewPlaceDialog()">
+        <mat-icon>add_circle_outline</mat-icon>
+    </button>
+    <nav mat-tab-nav-bar mat-align-tabs="center">
+        <a mat-tab-link
+           *ngFor="let pl of places; let i = index;"
+           [routerLink]="['/place', pl.id]"
+           routerLinkActive #rla="routerLinkActive"
+           [routerLinkActiveOptions]="pl.id == selectedPlace ? {exact: true} : {}"
+           [active]="rla.isActive">
+            {{pl.name | uppercase}}
+            <button mat-icon-button (click)="deleteItem(pl)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </a>
+    </nav>
+    <router-outlet></router-outlet>
 </ng-template>

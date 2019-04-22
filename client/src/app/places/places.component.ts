@@ -27,9 +27,9 @@ export class PlacesComponent implements OnInit {
     
     ngOnInit() {
         this.places = this.placesService.getPlaces();
-        this.placesService.placesChanged.subscribe((places: PlacesModel[])=>{
+        this.placesService.placesChanged.subscribe( ( places: PlacesModel[] ) => {
             this.places = places;
-        });
+        } );
     }
     
     addNewPlaceDialog(): void {
@@ -43,17 +43,24 @@ export class PlacesComponent implements OnInit {
             if ( result ) {
                 this.name = result;
                 this.placesService.addPlaces( new PlacesModel( Math.floor( Math.random() * 100 ), this.name, 1 ) );
+                
+                let firstPlace = this.placesService.getPlaces()[ 0 ];
+                if(this.placesService.getPlaces().length <= 1) {
+                    this.router.navigate( [ "place", firstPlace.id ], { relativeTo: this.route } );
+                }
             }
         } );
     }
     
     deleteItem( data: PlacesModel ) {
         if ( window.confirm( 'Are sure you want to delete this item?' ) ) {
-            this.placesService.deletePlace(data);
+            this.placesService.deletePlace( data );
             let currentId = +this.placesService.placeSelected;
-            if(currentId === data.id) {
+            if ( currentId === data.id) {
                 let firstPlace = this.placesService.getPlaces()[ 0 ];
-                this.router.navigate( [ "place", firstPlace.id ], { relativeTo: this.route } );
+                if(this.placesService.getPlaces().length > 0) {
+                    this.router.navigate( [ "place", firstPlace.id ], { relativeTo: this.route } );
+                }
             }
         }
         return false;

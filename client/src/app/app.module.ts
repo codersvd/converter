@@ -5,16 +5,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { PlacesComponent } from './places/places.component';
 import { PlaceComponent } from './places/place/place.component';
-import {
-    MatButtonModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatTabsModule
-} from '@angular/material';
 import { AddPlaceDialogComponent } from './places/add-place-dialog/add-place-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { MaterialModule } from "./material.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { PlacesService } from "./places/places.service";
@@ -35,12 +28,7 @@ import { ErrorPagesComponent } from './error-pages/error-pages.component';
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
-        MatTabsModule,
-        MatIconModule,
-        MatButtonModule,
-        MatDialogModule,
-        MatInputModule,
-        MatFormFieldModule
+        MaterialModule
     ],
     entryComponents: [
         AddPlaceDialogComponent
