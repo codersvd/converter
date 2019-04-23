@@ -11,7 +11,6 @@ const appRoute: Routes = [
     { path: 'places', component: PlacesComponent },
     { path: 'place/:id', component: PlaceComponent },
     { path: 'error-page', component: ErrorPagesComponent, data: { message: 'Page not found!' } },
-    //{path: '404', component: PageNotFoundComponent},
     { path: '**', redirectTo: '/error-page' }
 ];
 
