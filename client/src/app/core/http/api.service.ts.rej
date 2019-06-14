@@ -1,0 +1,6 @@
+diff a/client/src/app/core/http/api.service.ts b/client/src/app/core/http/api.service.ts	(rejected hunks)
+@@ -10,3 +10 @@ export class ApiService {
+-  constructor(private http: HttpClient) {
+-  
+-  }
++  constructor(private http: HttpClient) {}
