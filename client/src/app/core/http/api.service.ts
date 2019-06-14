@@ -9,13 +9,13 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  //get(url)
+  // get(url)
 
-  //post(url, body, options)
+  // post(url, body, options)
 
-  //delete(url, body)
+  // delete(url, body)
 
-  //put(url, data)
+  // put(url, data)
 
-  //upload(url, file)
+  // upload(url, file)
 }

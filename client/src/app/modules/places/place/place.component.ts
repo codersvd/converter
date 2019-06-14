@@ -10,7 +10,7 @@ import { PlacesModel } from '../places.model';
   styleUrls: ['./place.component.less']
 })
 export class PlaceComponent implements OnInit {
-  place: PlacesModel;
+  public place: PlacesModel;
   @Output() itemDeleted = new EventEmitter<PlacesModel>();
 
   constructor(
