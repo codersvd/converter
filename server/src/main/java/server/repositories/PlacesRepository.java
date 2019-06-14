@@ -13,7 +13,7 @@ import java.util.List;
 public interface PlacesRepository extends JpaRepository<PlacesDto, Integer> {
 
     //@Query("SELECT id, name, status FROM places WHERE status=1")
-    List<PlacesDto> findAll(1);
+    List<PlacesDto> findAll();
 
     List<PlacesDto> findAllByStatus(@Param("status") byte status);
 }

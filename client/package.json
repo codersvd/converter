@@ -7,12 +7,20 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "format:write": "prettier {src,e2e,cypress}/**/*.{ts,json,md,scss} --write",
+    "format:test": "prettier {src,e2e,cypress}/**/*.{ts,json,md,scss} --list-different"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "ng lint"
+      "pre-commit": "lint-staged && ng lint"
     }
+  },
+  "lint-staged": {
+    "{src,e2e,cypress}/**/*.{ts,json,md,scss}": [
+      "prettier --write",
+      "git add . -A"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -50,6 +58,8 @@
     "karma-coverage-istanbul-reporter": "~2.0.0",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.17.0",
     "protractor": "^5.4.2",
     "ts-node": "~8.0.2",
     "tslint": "~5.12.1",

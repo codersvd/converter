@@ -9,13 +9,16 @@ public class PlacesDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private int id;
 
     @Column(name = "name")
     private String name;
 
     @Column(name = "status")
-    private Byte status;
+    private byte status;
+
+    @Column(name = "user")
+    private int user;
 
     public PlacesDto() {
     }

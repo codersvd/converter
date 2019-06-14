@@ -1,26 +1,40 @@
 {
   "compileOnSave": false,
-  "angularCompilerOptions": { "enableIvy": true },
+  "angularCompilerOptions": {
+    "preserveWhitespaces": false
+  },
   "compilerOptions": {
     "baseUrl": "./",
-    "importHelpers": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "module": "es2015",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "es6",
     "typeRoots": [
       "node_modules/@types"
     ],
     "types" : [
       "core-js"
     ],
+    "paths": {
+      "@app/*": ["app/*"],
+      "@env/*": [
+        "environments/*"
+      ],
+      "@testing/*": [
+        "testing/*"
+      ]
+    },
     "lib": [
       "es2018",
-      "dom"
+      "dom",
+      "es6",
+      "dom.Iterable",
+      "ScriptHost"
     ]
   }
 }
