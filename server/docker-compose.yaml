@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  db:
+    build: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: testdb
+    ports:
+    - 5432
+  server:
+    build: .
+    ports:
+      - "8900:8900"
+    links:
+      - db
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      JAVA_HEAP_SIZE_MB: 1024
