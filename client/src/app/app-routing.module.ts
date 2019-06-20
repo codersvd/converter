@@ -5,9 +5,10 @@ import { ErrorPagesComponent } from './error-pages/error-pages.component';
 import { PlaceComponent } from './modules/places/place/place.component';
 import { PlacesComponent } from './modules/places/places.component';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home.component';
 
 const appRoute: Routes = [
-  { path: '', component: AppComponent },
+  { path: '', component: HomeComponent },
   { path: 'places', component: PlacesComponent },
   { path: 'place/:id', component: PlaceComponent },
   {

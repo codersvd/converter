@@ -13,12 +13,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ErrorPagesComponent } from './error-pages/error-pages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PlacesService } from './modules/places/places.service';
+import { HomeComponent } from './home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlacesComponent,
     PlaceComponent,
+    HomeComponent,
     AddPlaceDialogComponent,
     PageNotFoundComponent,
     ErrorPagesComponent

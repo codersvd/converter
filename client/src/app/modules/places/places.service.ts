@@ -15,7 +15,7 @@ export class PlacesService {
   }
 
   getPlace(id: number) {
-    return this.getPlaces().find(obj => obj.id === id);
+    return this.getPlaces().find(obj => obj.id === +id);
   }
 
   addPlaces(placeModel: PlacesModel) {
