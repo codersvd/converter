@@ -17,8 +17,8 @@ public class PlacesDto {
     @Column(name = "status")
     private byte status;
 
-    @Column(name = "user")
-    private int user;
+    @Column(name = "userid")
+    private int userid;
 
     public PlacesDto() {
     }
@@ -48,9 +48,13 @@ public class PlacesDto {
         this.status = status;
     }
 
+    public int getUserid() {
+        return userid;
+    }
+
     @Override
     public String toString() {
-        return "Place: " + this.id + ", " + this.name + ", " + this.status;
+        return "Place: " + this.id + ", " + this.name + ", " + this.status+","+this.userid;
     }
 
 }
