@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { AddPlaceDialogComponent } from './add-place-dialog/add-place-dialog.component';
 import { PlacesService } from './places.service';
 import { PlacesModel } from './places.model';
+import { ApiService } from '../../core/http/api.service';
 
 @Component({
   selector: 'app-places',
@@ -22,7 +23,8 @@ export class PlacesComponent implements OnInit {
     public dialog: MatDialog,
     private route: ActivatedRoute,
     private router: Router,
-    private placesService: PlacesService
+    private placesService: PlacesService,
+    private apiService: ApiService
   ) {}
 
   ngOnInit() {
@@ -30,6 +32,8 @@ export class PlacesComponent implements OnInit {
     this.placesService.placesChanged.subscribe((places: PlacesModel[]) => {
       this.places = places;
     });
+
+    console.log(this.apiService.getPlaces());
   }
 
   addNewPlaceDialog(): void {

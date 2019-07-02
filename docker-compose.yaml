@@ -30,7 +30,7 @@ services:
       - db    
     volumes:
       - /init-users.sh:/docker-entrypoint-initdb.d/init-user-db.sh
-      - ./server/target/server-0.0.1-SNAPSHOT.jar:/server-0.0.1-SNAPSHOT.jar      
+      - /server/target/server-0.0.1-SNAPSHOT.jar:/server-0.0.1-SNAPSHOT.jar      
     command: ["java", "-jar", "/server-0.0.1-SNAPSHOT.jar"]
     networks:
       - backendNetwork
@@ -44,8 +44,8 @@ services:
     depends_on:
       - api
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./client/dist/client/:/usr/share/nginx/html
+      - /nginx.conf:/etc/nginx/nginx.conf
+      - /client/dist/client/:/usr/share/nginx/html
     networks:
       - frontendNetwork
      

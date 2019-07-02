@@ -1,14 +1,20 @@
 import { PlacesModel } from './places.model';
 import { EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs/internal/Subject';
 
 export class PlacesService {
   placeSelected = new EventEmitter<PlacesModel>();
-  placesChanged = new EventEmitter<PlacesModel[]>();
+  placesChanged = new Subject<PlacesModel[]>();
 
-  private places: Array<PlacesModel> = [
+  private places: PlacesModel[] = [
     new PlacesModel(1, 'Praga', 1),
     new PlacesModel(3, 'Vena', 1)
   ];
+
+  setPlaces(places: PlacesModel[]) {
+    this.places = places;
+    this.placesChanged.next(this.places.slice());
+  }
 
   getPlaces() {
     return this.places.slice();
@@ -20,7 +26,7 @@ export class PlacesService {
 
   addPlaces(placeModel: PlacesModel) {
     this.places.push(placeModel);
-    this.placesChanged.emit(this.places.slice());
+    this.placesChanged.next(this.places.slice());
   }
 
   deletePlace(place: PlacesModel) {
@@ -28,6 +34,6 @@ export class PlacesService {
       this.places.findIndex(pl => pl.id === place.id && pl.user === place.user),
       1
     );
-    this.placesChanged.emit(this.places.slice());
+    this.placesChanged.next(this.places.slice());
   }
 }
