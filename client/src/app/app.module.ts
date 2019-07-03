@@ -14,7 +14,8 @@ import { ErrorPagesComponent } from './error-pages/error-pages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PlacesService } from './modules/places/places.service';
 import { HomeComponent } from './home.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { PlacesResolver } from './modules/places/places.resolver';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   entryComponents: [AddPlaceDialogComponent],
-  providers: [PlacesService],
+  providers: [PlacesService, PlacesResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

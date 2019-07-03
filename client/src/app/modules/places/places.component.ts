@@ -1,11 +1,17 @@
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterContentInit,
+  AfterViewInit,
+  Component,
+  OnInit
+} from '@angular/core';
 import { MatDialog } from '@angular/material';
 
 import { AddPlaceDialogComponent } from './add-place-dialog/add-place-dialog.component';
 import { PlacesService } from './places.service';
 import { PlacesModel } from './places.model';
 import { ApiService } from '../../core/http/api.service';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-places',
@@ -15,7 +21,7 @@ import { ApiService } from '../../core/http/api.service';
 export class PlacesComponent implements OnInit {
   name: string;
 
-  places: Array<PlacesModel>;
+  places: PlacesModel[] = [];
 
   selectedPlace = 1;
 
@@ -23,17 +29,20 @@ export class PlacesComponent implements OnInit {
     public dialog: MatDialog,
     private route: ActivatedRoute,
     private router: Router,
-    private placesService: PlacesService,
-    private apiService: ApiService
+    private placesService: PlacesService
   ) {}
 
   ngOnInit() {
-    this.places = this.placesService.getPlaces();
     this.placesService.placesChanged.subscribe((places: PlacesModel[]) => {
       this.places = places;
-    });
 
-    console.log(this.apiService.getPlaces());
+      const firstPlace = this.placesService.getPlaces()[0];
+      if (this.placesService.getPlaces().length <= 1) {
+        this.router.navigate(['place', firstPlace.id], {
+          relativeTo: this.route
+        });
+      }
+    });
   }
 
   addNewPlaceDialog(): void {

@@ -6,11 +6,26 @@ import { PlaceComponent } from './modules/places/place/place.component';
 import { PlacesComponent } from './modules/places/places.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
+import { PlacesModel } from './modules/places/places.model';
+import { PlacesResolver } from './modules/places/places.resolver';
 
 const appRoute: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'places', component: PlacesComponent },
-  { path: 'place/:id', component: PlaceComponent },
+  {
+    path: '',
+    component: HomeComponent,
+    pathMatch: 'full',
+    resolve: { places: PlacesResolver }
+  },
+  {
+    path: 'places',
+    component: PlacesComponent,
+    resolve: { places: PlacesResolver }
+  },
+  {
+    path: 'place/:id',
+    component: PlaceComponent,
+    resolve: { places: PlacesResolver }
+  },
   {
     path: 'error-page',
     component: ErrorPagesComponent,

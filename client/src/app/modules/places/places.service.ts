@@ -1,15 +1,13 @@
 import { PlacesModel } from './places.model';
 import { EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
+import { ApiService } from '../../core/http/api.service';
 
 export class PlacesService {
   placeSelected = new EventEmitter<PlacesModel>();
   placesChanged = new Subject<PlacesModel[]>();
 
-  private places: PlacesModel[] = [
-    new PlacesModel(1, 'Praga', 1),
-    new PlacesModel(3, 'Vena', 1)
-  ];
+  private places: PlacesModel[] = [];
 
   setPlaces(places: PlacesModel[]) {
     this.places = places;

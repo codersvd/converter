@@ -8,8 +8,8 @@ public class PlacesDto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "place_id")
-    private Long placeId;
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -28,8 +28,8 @@ public class PlacesDto {
         this.status = status;
     }
 
-    public Long getPlaceId() {
-        return placeId;
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -54,7 +54,7 @@ public class PlacesDto {
 
     @Override
     public String toString() {
-        return "Place: " + this.placeId + ", " + this.name + ", " + this.status+","+this.userid;
+        return "Place: " + this.id + ", " + this.name + ", " + this.status+","+this.userid;
     }
 
 }

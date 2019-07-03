@@ -1,3 +1,3 @@
-INSERT INTO places(place_id, name, status, userid) VALUES(default, 'Praga', 1, 1);
-INSERT INTO places(place_id, name, status, userid) VALUES(default, 'Moscow', 1, 1);
-INSERT INTO places(place_id, name, status, userid) VALUES(default, 'Berlin', 1, 1);
+INSERT INTO places(name, status, userid) VALUES('Praga', 1, 1);
+INSERT INTO places(name, status, userid) VALUES('Moscow', 1, 1);
+INSERT INTO places(name, status, userid) VALUES('Berlin', 1, 1);
