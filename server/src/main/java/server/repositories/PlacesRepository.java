@@ -13,5 +13,9 @@ public interface PlacesRepository extends JpaRepository<PlacesDto, Integer> {
     //@Query("SELECT id, name, status FROM places WHERE status=1")
     List<PlacesDto> findAll();
 
+    List<PlacesDto> findById(@Param("id") int id);
+
+    List<PlacesDto> findByAlias(@Param("alias") String alias);
+
     List<PlacesDto> findAllByStatus(@Param("status") byte status);
 }

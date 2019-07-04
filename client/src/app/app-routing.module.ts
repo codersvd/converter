@@ -22,7 +22,7 @@ const appRoute: Routes = [
     resolve: { places: PlacesResolver }
   },
   {
-    path: 'place/:id',
+    path: 'place/:alias',
     component: PlaceComponent,
     resolve: { places: PlacesResolver }
   },

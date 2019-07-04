@@ -18,8 +18,8 @@ export class PlacesService {
     return this.places.slice();
   }
 
-  getPlace(id: number) {
-    return this.getPlaces().find(obj => obj.id === +id);
+  getPlace(alias: string) {
+    return this.getPlaces().find(obj => obj.alias === alias);
   }
 
   addPlaces(placeModel: PlacesModel) {
@@ -29,7 +29,9 @@ export class PlacesService {
 
   deletePlace(place: PlacesModel) {
     this.places.splice(
-      this.places.findIndex(pl => pl.id === place.id && pl.user === place.user),
+      this.places.findIndex(
+        pl => pl.alias === place.alias && pl.user === place.user
+      ),
       1
     );
     this.placesChanged.next(this.places.slice());

@@ -19,11 +19,13 @@ export class PlaceComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.place = this.placesService.getPlace(this.route.snapshot.params['id']);
+    this.place = this.placesService.getPlace(
+      this.route.snapshot.params['alias']
+    );
 
     this.route.params.subscribe((params: Params) => {
-      this.placesService.placeSelected = params['id'];
-      this.place = this.placesService.getPlace(params['id']);
+      this.placesService.placeSelected = params['alias'];
+      this.place = this.placesService.getPlace(params['alias']);
     });
   }
 }

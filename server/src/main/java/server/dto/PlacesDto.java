@@ -9,7 +9,7 @@ public class PlacesDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
 
     @Column(name = "name")
     private String name;
@@ -20,6 +20,9 @@ public class PlacesDto {
     @Column(name = "userid")
     private int userid;
 
+    @Column(name = "alias")
+    private String alias;
+
     public PlacesDto() {
     }
 
@@ -28,7 +31,7 @@ public class PlacesDto {
         this.status = status;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -50,6 +53,14 @@ public class PlacesDto {
 
     public int getUserid() {
         return userid;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public String getAlias() {
+        return alias;
     }
 
     @Override
