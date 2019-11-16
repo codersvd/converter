@@ -1,13 +1,17 @@
 import { PlacesModel } from './places.model';
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 import { ApiService } from '../../core/http/api.service';
+import { HttpClient } from '@angular/common/http';
 
+@Injectable()
 export class PlacesService {
   placeSelected = new EventEmitter<PlacesModel>();
   placesChanged = new Subject<PlacesModel[]>();
 
   private places: PlacesModel[] = [];
+
+  constructor(private http: HttpClient, private api: ApiService) {}
 
   setPlaces(places: PlacesModel[]) {
     this.places = places;
@@ -19,12 +23,15 @@ export class PlacesService {
   }
 
   getPlace(alias: string) {
-    return this.getPlaces().find(obj => obj.alias === alias);
+    const place = this.getPlaces().find(obj => obj.alias === alias);
+    return place;
   }
 
   addPlaces(placeModel: PlacesModel) {
-    this.places.push(placeModel);
-    this.placesChanged.next(this.places.slice());
+    this.api.post('places', placeModel).subscribe(data => {
+      this.places.push(data);
+      this.placesChanged.next(this.places.slice());
+    });
   }
 
   deletePlace(place: PlacesModel) {

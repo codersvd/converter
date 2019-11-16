@@ -1,11 +1,15 @@
 package server.dto;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import server.repositories.PlacesRepository;
+import server.services.PlacesService;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "places")
 public class PlacesDto {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -20,7 +24,7 @@ public class PlacesDto {
     @Column(name = "userid")
     private int userid;
 
-    @Column(name = "alias")
+    @Column(name = "alias", unique=true)
     private String alias;
 
     public PlacesDto() {
@@ -56,6 +60,7 @@ public class PlacesDto {
     }
 
     public void setAlias(String alias) {
+
         this.alias = alias;
     }
 

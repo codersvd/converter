@@ -21,7 +21,7 @@ import { Observable } from 'rxjs/internal/Observable';
 export class PlacesComponent implements OnInit {
   name: string;
 
-  places: PlacesModel[] = [];
+  public places: PlacesModel[] = [];
 
   selectedPlace = 1;
 

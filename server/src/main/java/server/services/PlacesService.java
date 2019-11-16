@@ -13,11 +13,6 @@ public class PlacesService {
 
     private PlacesRepository placesDao;
 
-    @Autowired
-    public PlacesService(PlacesRepository ps) {
-        placesDao = ps;
-    }
-
     @Transactional
     public void save(PlacesDto entity) {
         placesDao.save(entity);
@@ -30,8 +25,13 @@ public class PlacesService {
 
     @Transactional
     public PlacesDto findById(Integer id) {
-        PlacesDto place = placesDao.findById(id).orElse(null);
-        return place;
+        return placesDao.findById(id).orElse(null);
+    }
+
+    @Transactional
+    public long countByAlias(String alias) {
+        long countPlaces = placesDao.countByAlias(alias);
+        return countPlaces;
     }
 
     @Transactional
