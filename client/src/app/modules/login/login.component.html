@@ -1,0 +1,27 @@
+<mat-card class="tp-card">
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+            <mat-form-field>
+                <input matInput id="email" type="email" class="form-control"
+                       placeholder="Enter email"
+                       required
+                       email
+                       formControlName="email"
+                >
+                <mat-error *ngIf="email.invalid">{{getErrorEmail()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput id="password" type="password" class="form-control"
+                       placeholder="Enter password"
+                       required
+                       formControlName="password"
+                >
+                <mat-error *ngIf="password.invalid">{{getErrorPassword()}}</mat-error>
+            </mat-form-field>
+            <mat-card-actions>
+                <button mat-raised-button [disabled]="!loginForm.valid" type="submit" color="accent">Submit</button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+</mat-card>

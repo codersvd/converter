@@ -6,6 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import server.repositories.PlacesRepository;
 import server.dto.PlacesDto;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 @Service

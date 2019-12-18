@@ -2,6 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
-  template: '<router-outlet></router-outlet>'
+  template: '<app-places></app-places>'
 })
 export class HomeComponent {}
