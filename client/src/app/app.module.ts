@@ -1,6 +1,6 @@
-import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
-import { BrowserModule }                    from '@angular/platform-browser';
-import { NgModule }                         from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AddPlaceDialogComponent } from './modules/places/add-place-dialog/add-place-dialog.component';
@@ -19,16 +19,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlacesResolver } from './modules/places/places.resolver';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PlacesComponent,
-    PlaceComponent,
-    HomeComponent,
-    LoginComponent,
-    AddPlaceDialogComponent,
-    PageNotFoundComponent,
-    ErrorPagesComponent
-  ],
+    declarations: [
+        AppComponent,
+        PlacesComponent,
+        PlaceComponent,
+        HomeComponent,
+        LoginComponent,
+        AddPlaceDialogComponent,
+        PageNotFoundComponent,
+        ErrorPagesComponent
+    ],
     imports: [
         AppRoutingModule,
         BrowserModule,
@@ -38,8 +38,8 @@ import { PlacesResolver } from './modules/places/places.resolver';
         HttpClientModule,
         ReactiveFormsModule
     ],
-  entryComponents: [AddPlaceDialogComponent],
-  providers: [PlacesService, PlacesResolver],
-  bootstrap: [AppComponent]
+    entryComponents: [AddPlaceDialogComponent],
+    providers: [PlacesService, PlacesResolver],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}
