@@ -1,30 +1,69 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
+
+import { ApiService } from '../../core/http/api.service';
+import { AuthenticationService } from '@app/core/authentication/authentication.service';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.less']
 })
-export class LoginComponent implements OnInit {
-    email: FormControl = new FormControl(null, [
-        Validators.email,
-        Validators.required
-    ]);
+export class LoginComponent implements OnInit, OnDestroy {
+    private subscription: Subscription;
+    loading = false;
+    submitted = false;
+    returnUrl: string;
+
+    email: FormControl = new FormControl(null, [Validators.email, Validators.required]);
     password: FormControl = new FormControl(null, Validators.required);
 
     loginForm: FormGroup;
 
-    constructor() {}
+    constructor(
+        private api: ApiService,
+        private auth: AuthenticationService,
+        private router: Router,
+        private route: ActivatedRoute
+    ) {
+        if (this.auth.currentUserValue) {
+            this.router.navigate(['/']);
+        }
+    }
 
     ngOnInit() {
         this.loginForm = new FormGroup({
             email: this.email,
             password: this.password
         });
+
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     onSubmit() {
+        this.submitted = true;
+
+        if (this.loginForm.invalid) {
+            return;
+        }
+
+        this.loading = true;
+        this.subscription = this.api
+            .get('login')
+            .pipe(first())
+            .subscribe(
+                obj => {
+                    console.log(obj);
+                    this.router.navigate([this.returnUrl]);
+                },
+                error => {
+                    console.log(error);
+                    this.loading = false;
+                }
+            );
         console.log(this.loginForm);
     }
 
@@ -37,8 +76,10 @@ export class LoginComponent implements OnInit {
     }
 
     getErrorPassword(password: FormControl) {
-        return this.password.hasError('required')
-            ? 'You must enter a value'
-            : '';
+        return this.password.hasError('required') ? 'You must enter a value' : '';
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

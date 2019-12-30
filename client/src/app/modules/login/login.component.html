@@ -9,7 +9,7 @@
                        email
                        formControlName="email"
                 >
-                <mat-error *ngIf="email.invalid">{{getErrorEmail()}}</mat-error>
+                <mat-error *ngIf="submitted && email.invalid">{{getErrorEmail()}}</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input matInput id="password" type="password" class="form-control"
@@ -17,10 +17,10 @@
                        required
                        formControlName="password"
                 >
-                <mat-error *ngIf="password.invalid">{{getErrorPassword()}}</mat-error>
+                <mat-error *ngIf="submitted && password.invalid">{{getErrorPassword()}}</mat-error>
             </mat-form-field>
             <mat-card-actions>
-                <button mat-raised-button [disabled]="!loginForm.valid" type="submit" color="accent">Submit</button>
+                <button mat-raised-button [disabled]="!loginForm.valid || loading" type="submit" color="accent">Submit</button>
             </mat-card-actions>
         </form>
     </mat-card-content>

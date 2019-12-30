@@ -18,8 +18,7 @@
   },
   "lint-staged": {
     "{src,e2e,cypress}/**/*.{ts,json,md,less}": [
-      "prettier --write",
-      "git add . -A"
+      "prettier --write"
     ]
   },
   "private": true,

@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-    HttpClient,
-    HttpErrorResponse,
-    HttpHeaders
-} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, shareReplay, map, retry } from 'rxjs/operators';
 import { PlacesService } from '../../modules/places/places.service';
 import { Observable } from 'rxjs/internal/Observable';
@@ -42,19 +38,18 @@ export class ApiService {
     }
 
     private handleError(error: HttpErrorResponse) {
+        let mess = 'Something bad happened; please try again later.';
         if (error.error instanceof ErrorEvent) {
             // A client-side or network error occurred. Handle it accordingly.
-            console.error('An error occurred:', error.error.message);
+            mess = 'An error occurred:' + error.message;
         } else {
             // The backend returned an unsuccessful response code.
             // The response body may contain clues as to what went wrong,
-            console.error(
-                `Backend returned code ${error.status}, ` +
-                    `body was: ${error.error}`
-            );
+            mess = `Backend returned code ${error.status}, body was: ${error.message}`;
         }
         // return an observable with a user-facing error message
-        return throwError('Something bad happened; please try again later.');
+        console.error(mess);
+        return throwError(mess);
     }
 
     // delete(url, body)
