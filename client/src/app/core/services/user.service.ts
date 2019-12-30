@@ -8,6 +8,6 @@ export class UserService {
     constructor(private api: ApiService) {}
 
     register(user: User) {
-        //return this.http.post(`${config.apiUrl}/users/register`, user);
+        // return this.http.post(`${config.apiUrl}/users/register`, user);
     }
 }

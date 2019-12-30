@@ -7,7 +7,7 @@ import { AuthenticationService } from '@app/core/authentication/authentication.s
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
     constructor(private authenticationService: AuthenticationService) {}
-    
+
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header with jwt token if available
         const currentUser = this.authenticationService.currentUserValue;
@@ -18,7 +18,7 @@ export class JwtInterceptor implements HttpInterceptor {
                 }
             });
         }
-        
+
         return next.handle(request);
     }
 }

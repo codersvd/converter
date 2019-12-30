@@ -10,15 +10,15 @@ import { PlacesComponent } from './modules/places/places.component';
 import { LoginComponent } from './modules/login/login.component';
 import { MaterialModule } from './material.module';
 
-import { AppComponent }          from './app.component';
+import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ErrorPagesComponent }   from './error-pages/error-pages.component';
-import { AppRoutingModule }      from './app-routing.module';
-import { PlacesService }         from './modules/places/places.service';
-import { HomeComponent }         from './home.component';
-import { PlacesResolver }        from './modules/places/places.resolver';
-import { JwtInterceptor }        from "@app/core/interceptors/jwt.interceptor";
-import { ErrorInterceptor }      from "@app/core/interceptors/error.interceptor";
+import { ErrorPagesComponent } from './error-pages/error-pages.component';
+import { AppRoutingModule } from './app-routing.module';
+import { PlacesService } from './modules/places/places.service';
+import { HomeComponent } from './home.component';
+import { PlacesResolver } from './modules/places/places.resolver';
+import { JwtInterceptor } from '@app/core/interceptors/jwt.interceptor';
+import { ErrorInterceptor } from '@app/core/interceptors/error.interceptor';
 
 @NgModule({
     declarations: [
