@@ -21,7 +21,7 @@ export class ApiService {
 
     get(action: string) {
         return this.http.get(this.API_URL + action).pipe(
-            retry(3),
+            retry(2),
             catchError(this.handleError),
             map((resp: Response) => {
                 const data = resp['_embedded'][action];
@@ -41,7 +41,7 @@ export class ApiService {
         let mess = 'Something bad happened; please try again later.';
         if (error.error instanceof ErrorEvent) {
             // A client-side or network error occurred. Handle it accordingly.
-            mess = 'An error occurred:' + error.message;
+            mess = error.message;
         } else {
             // The backend returned an unsuccessful response code.
             // The response body may contain clues as to what went wrong,

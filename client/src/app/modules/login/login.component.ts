@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 import { ApiService } from '../../core/http/api.service';
 import { AuthenticationService } from '@app/core/authentication/authentication.service';
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         private api: ApiService,
         private auth: AuthenticationService,
         private router: Router,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private _snackBar: MatSnackBar
     ) {
         if (this.auth.currentUserValue) {
             this.router.navigate(['/']);
@@ -61,10 +63,14 @@ export class LoginComponent implements OnInit, OnDestroy {
                 },
                 error => {
                     console.log(error);
+                    this._snackBar.open(error, null,{
+                        duration: 5000,
+                        horizontalPosition: 'center',
+                        verticalPosition: 'top'
+                    });
                     this.loading = false;
                 }
             );
-        console.log(this.loginForm);
     }
 
     getErrorEmail(email: FormControl) {

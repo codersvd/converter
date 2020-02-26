@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, config, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map }                     from 'rxjs/operators';
 
 import { User } from '@app/core/interfaces/user';
 import { ApiService } from '@app/core/http/api.service';
@@ -10,6 +10,7 @@ import { ApiService } from '@app/core/http/api.service';
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
+    public errorMessage: String = '';
 
     constructor(private http: HttpClient, private api: ApiService) {
         this.currentUserSubject = new BehaviorSubject<User>(
