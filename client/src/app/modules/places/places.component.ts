@@ -1,6 +1,6 @@
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 import { AddPlaceDialogComponent } from './add-place-dialog/add-place-dialog.component';
 import { PlacesService } from './places.service';
@@ -51,11 +51,7 @@ export class PlacesComponent implements OnInit {
             if (result) {
                 this.name = result;
                 this.placesService.addPlaces(
-                    new PlacesModel(
-                        Math.floor(Math.random() * 100),
-                        this.name,
-                        1
-                    )
+                    new PlacesModel(Math.floor(Math.random() * 100), this.name, 1)
                 );
 
                 const firstPlace = this.placesService.getPlaces()[0];

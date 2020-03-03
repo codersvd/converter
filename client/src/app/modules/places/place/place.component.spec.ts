@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PlaceComponent } from './place.component';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { PlacesService } from '../places.service';
 import { PlacesModel } from '../places.model';
@@ -14,11 +14,7 @@ describe('PlaceComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [PlaceComponent],
-            imports: [
-                MatIconModule,
-                RouterModule.forRoot([]),
-                RouterTestingModule
-            ],
+            imports: [MatIconModule, RouterModule.forRoot([]), RouterTestingModule],
             providers: [PlacesService]
         }).compileComponents();
 
