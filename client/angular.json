@@ -9,10 +9,10 @@
       "projectType": "application",
       "prefix": "app",
       "schematics": {
-          "@schematics/angular:component": {
-            "changeDetection": "OnPush",
-            "style": "less"
-          }
+        "@schematics/angular:component": {
+          "changeDetection": "OnPush",
+          "style": "less"
+        }
       },
       "architect": {
         "build": {
@@ -135,5 +135,8 @@
       }
     }
   },
-  "defaultProject": "client"
+  "defaultProject": "client",
+  "cli": {
+    "analytics": "f6bd8279-9351-412b-80bf-6c0390445c02"
+  }
 }
